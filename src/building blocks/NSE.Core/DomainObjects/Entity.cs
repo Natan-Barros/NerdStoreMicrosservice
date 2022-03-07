@@ -1,14 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NSE.Core.Messages;
 
 namespace NSE.Core.DomainObjects
 {
     public abstract class Entity
     {
         public Guid Id { get; set; }
+
+        public Entity()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        private List<Event> _notifications;
+        public IReadOnlyCollection<Event> Notificacoes => _notifications?.AsReadOnly();
+
+
+        public void AdicionarEvento(Event evento)
+        {
+            _notifications = _notifications ?? new List<Event>();
+            _notifications.Add(evento);
+        }
+
+        public void RemoverEvento(Event evento)
+        {
+            _notifications?.Remove(evento);
+        }
+
+        public void LimparEventos()
+        {
+            _notifications?.Clear();
+        }
+
+        #region Comparações
 
         public override bool Equals(object? obj)
         {
@@ -22,7 +45,7 @@ namespace NSE.Core.DomainObjects
 
         public override int GetHashCode()
         {
-            return (GetType().GetHashCode() *  907) + Id.GetHashCode();
+            return (GetType().GetHashCode() * 907) + Id.GetHashCode();
         }
 
         public override string ToString()
@@ -36,7 +59,7 @@ namespace NSE.Core.DomainObjects
 
             if (ReferenceEquals(a, null) || ReferenceEquals(b, null)) return false;
 
-            return  a.Equals(b);
+            return a.Equals(b);
         }
 
         public static bool operator !=(Entity a, Entity b)
@@ -44,5 +67,6 @@ namespace NSE.Core.DomainObjects
             return !(a == b);
         }
 
+        #endregion
     }
 }

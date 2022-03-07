@@ -20,7 +20,7 @@ builder.Services.AddJwtConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
-app.useSwaggerConfiguration();
+app.UseSwaggerConfiguration();
 app.UseApiConfiguration(app.Environment);
 
 app.Run();

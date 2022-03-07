@@ -10,10 +10,11 @@ namespace NSE.Core.DomainObjects
         public string Endereco { get; private set; }
 
         protected Email() { }
-          
+
         public Email(string endereco)
         {
-            if (!Validar(Endereco)) throw new DomainException("E-mail inválido");
+            if (!Validar(endereco))
+                throw new DomainException("E-mail inválido");
             Endereco = endereco;
         }
 

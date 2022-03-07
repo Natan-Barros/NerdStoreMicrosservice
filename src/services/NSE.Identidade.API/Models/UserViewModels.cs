@@ -4,6 +4,12 @@ namespace NSE.Identidade.API.Models
 {
     public class UsuarioRegistro
     {
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Nome { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Cpf { get; set; }
+
         [Required]
         [EmailAddress]
         public string Email { get; set; }

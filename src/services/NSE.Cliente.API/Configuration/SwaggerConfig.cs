@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace NSE.Catalogo.API.Configuration
+namespace NSE.Clientes.API.Configuration
 {
     public static class SwaggerConfig
     {
@@ -10,7 +10,7 @@ namespace NSE.Catalogo.API.Configuration
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "NerdStore Enterprise Catálogo API",
+                    Title = "NerdStore Enterprise Cliente API",
                     Description = "Esta API faz parte do curso de ASP.NET Enterprise Applications.",
                     Contact = new OpenApiContact() { Name = "Natan Barros", Email = "natanbarros133@gmail.com" },
                     License = new OpenApiLicense()
